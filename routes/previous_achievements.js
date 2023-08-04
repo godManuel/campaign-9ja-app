@@ -1,11 +1,12 @@
 import express from "express";
 import {
   createProject,
-  getProject,
+  getProjects,
 } from "../controllers/previous_achievements.js";
 const router = express.Router();
+import { protect, authorize } from "../middlewares/auth.js";
 
-router.route("/").post(createProject);
-router.route("/:id").get(getProject);
+router.route("/").post(protect, authorize("admin"), createProject);
+router.route("/:id").get(getProjects);
 
 export default router;

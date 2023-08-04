@@ -7,8 +7,13 @@ import {
 } from "../controllers/aspirants.js";
 const router = express.Router();
 
-router.route("/").post(createAspirant).get(getAspirants);
+import { protect, authorize } from "../middlewares/auth.js";
+
+router
+  .route("/")
+  .post(protect, authorize("admin"), createAspirant)
+  .get(getAspirants);
 router.route("/:id").get(getAspirant);
-router.route("/:id/avatar").put(addAspirantAvatar);
+router.route("/:id/avatar").put(protect, authorize("admin"), addAspirantAvatar);
 
 export default router;

@@ -57,7 +57,7 @@ const createProject = asyncHandler(async (req, res, next) => {
   // res.status(200).json({ success: true, data: project });
 });
 
-const getProject = asyncHandler(async (req, res, next) => {
+const getProjects = asyncHandler(async (req, res, next) => {
   const projects = await PreviousAchievement.findOne({
     aspirant: req.params.aspirantId,
   });
@@ -68,4 +68,4 @@ const getProject = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: projects });
 });
 
-export { createProject, getProject };
+export { createProject, getProjects };

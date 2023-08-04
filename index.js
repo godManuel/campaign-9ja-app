@@ -1,3 +1,5 @@
+import path from path
+
 import express from "express";
 const app = express();
 
@@ -15,6 +17,7 @@ import fileupload from "express-fileupload";
 // Express middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(fileupload());
 
