@@ -15,10 +15,10 @@ const login = asyncHandler(async (req, res, next) => {
   }
 
   const user = await User.findOne({ handle: req.body.handle });
-  if (!user) return next(new ErrorResponse("Credentials-1 invalid", 401));
+  if (!user) return next(new ErrorResponse("Credentials invalid", 401));
 
   const isMatch = await user.matchPassword(req.body.password);
-  if (!isMatch) return next(new ErrorResponse("Credentials-2 invalid", 401));
+  if (!isMatch) return next(new ErrorResponse("Credentials invalid", 401));
 
   const token = user.getSignedToken();
   await user.save();
