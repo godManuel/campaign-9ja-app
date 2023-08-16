@@ -18,6 +18,7 @@ const Aspirant = mongoose.model(
       type: String,
     },
     biography: String,
+    profile: String,
     previous_achievements: [
       {
         type: mongoose.Schema.Types.ObjectId,
