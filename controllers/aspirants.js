@@ -51,7 +51,7 @@ const addAspirantAvatar = asyncHandler(async (req, res, next) => {
 });
 
 const getAspirants = asyncHandler(async (req, res, next) => {
-  const aspirants = await Aspirant.find();
+  const aspirants = await Aspirant.find().populate("previous_achievements");
   res.status(200).json({ success: true, data: aspirants });
 });
 
