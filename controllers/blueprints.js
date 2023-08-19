@@ -2,6 +2,7 @@ import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import asyncHandler from "../middlewares/async.js";
 import Blueprint from "../models/Blueprint.js";
+import ErrorResponse from "../utils/errorResponse.js";
 
 const createBlueprint = asyncHandler(async (req, res, next) => {
   if (!req.files) {
